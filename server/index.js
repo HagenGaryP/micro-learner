@@ -9,7 +9,7 @@ const db = require('./db')
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
-const API_KEY = process.env.API_KEY;
+export const API_KEY = process.env.API_KEY;
 
 
 
@@ -26,12 +26,12 @@ let config = {
 };
 
 axios(config)
-.then(function (response) {
+.then((response) => {
   data = response.data.webPages.value
   // console.log(JSON.stringify(response.data));
   // console.log('data = ', response.data.webPages.value[0]);
 })
-.catch(function (error) {
+.catch((error) => {
   console.log(error);
 });
 
@@ -48,7 +48,7 @@ app.get('/', (req, res, next) => {
   }
 })
 
-module.exports = app
+
 const createApp = () => {
 
   // Logging middleware
