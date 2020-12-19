@@ -1,37 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { Rating, Pagination } from '@material-ui/lab';
-import { FaThList } from 'react-icons/fa';
-import { BsFillGrid3X2GapFill } from 'react-icons/bs';
-import SearchBar from 'material-ui-search-bar';
-import Fab from '@material-ui/core/Fab';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import { TopicPreview } from './index';
 import { removedTopic, fetchTopics, newTopic } from '../store';
-
-import { toast } from 'react-toastify';
-import { FormatAlignCenter } from '@material-ui/icons';
-toast.configure();
 
 /**
  * COMPONENT
  */
 const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
-  const [text, setText] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-  const [newSearchTerm, setNewSearchTerm] = useState('');
 
-  const API_KEY = '9195feb0ae9042b3ad466e98e14a9382';
+  const API_KEY = process.env.API_KEY;
 
   useEffect(() => {
     getTopics();
-  }, []);
 
-  const handleOnClick = (id) => {
-    deleteTopic(id);
-  };
+  }, []);
 
   // Fetch Searched Term
   const fetchSearch = async () => {
@@ -44,7 +29,7 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
     let data = '';
     let config = {
       method: 'get',
-      url: `https://api.bing.microsoft.com/v7.0/search?q=${newSearchTerm}`,
+      url: `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
       headers: {
         'Ocp-Apim-Subscription-Key': `${API_KEY}`,
       },
@@ -52,7 +37,7 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
     };
     return axios
       .get(
-        `https://api.bing.microsoft.com/v7.0/search?q=${newSearchTerm}`,
+        `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
         config
       )
       .then((response) => {
@@ -73,18 +58,13 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
       });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <div className="all-topics-start">
       <div>
         <h1>Search More Content</h1>
         <form
           onSubmit={() => {
-            console.log('submitted ', newSearchTerm);
-            // handleSubmit();
+            console.log('submitted ', searchTerm);
           }}
         >
           <label>
@@ -93,8 +73,8 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
               name="search"
               type="text"
               placeholder="Search..."
-              value={newSearchTerm}
-              onChange={(e) => setNewSearchTerm(e.target.value)}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           </label>
           {/* <input type='submit' value='Submit' /> */}
@@ -110,20 +90,6 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
       </div>
 
       <div className="top-area-container">
-        <div className="search-bar-container">
-          <SearchBar
-            value={text}
-            onChange={(newValue) => setText(newValue)}
-            onRequestSearch={() => {
-              setSearchTerm(text);
-            }}
-            onCancelSearch={() => {
-              setSearchTerm('');
-              setText('');
-            }}
-          />
-          <span className="divider-bar" />
-        </div>
       </div>
       {/* ---------- topics ----------*/}
       <div className="all-topics-container">
@@ -133,7 +99,6 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
               <TopicPreview
                 key={topic.id}
                 topic={topic}
-                handleOnClick={handleOnClick}
               />
             );
           })}
@@ -148,7 +113,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatch = (dispatch) => ({
   getTopics: () => dispatch(fetchTopics()),
-  deleteTopic: (topicId) => dispatch(removedTopic(topicId)),
   addTopic: (info) => dispatch(newTopic(info)),
 });
 
