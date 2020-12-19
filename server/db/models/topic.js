@@ -11,8 +11,8 @@ const Topic = db.define('topic', {
   },
   description: {
     type: Sequelize.TEXT,
-    defaultValue: "NO DESCRIPTION",
+    defaultValue: 'NO DESCRIPTION',
   },
-})
+});
 
 module.exports = Topic;

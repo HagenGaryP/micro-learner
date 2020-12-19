@@ -1,50 +1,69 @@
 {
   "name": "micro-learner",
-  "version": "0.1.0",
-  "private": true,
+  "version": "2.0.0",
+  "description": "Using Azure's Bing Web Search and Slack API to deliver documents, videos and other useful information to fellow developers.",
+  "engines": {
+    "node": "~12.11.1"
+  },
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "seed": "node script/seed.js"
+    "build-client": "webpack",
+    "build-client-watch": "webpack -w",
+    "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
+    "postinstall": "touch secrets.js",
+    "seed": "node script/seed.js",
+    "start": "node server",
+    "start-dev": "NODE_ENV='development' npm run build-client-watch & NODE_ENV='development' npm run start-server",
+    "start-server": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
+  "author": "Gary Hagen",
+  "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.6.0",
-    "axios": "^0.21.0",
-    "babel-cli": "^6.26.0",
-    "babel-preset-react-app": "^3.1.2",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "path": "^0.12.7",
-    "pg": "^8.5.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.1",
-    "sequelize": "^6.3.5",
-    "web-vitals": "^0.2.4"
+    "axios": "^0.19.0",
+    "bootstrap": "^4.4.1",
+    "compression": "^1.7.3",
+    "css-loader": "^3.5.3",
+    "express": "^4.16.4",
+    "express-session": "^1.15.1",
+    "file-loader": "^6.0.0",
+    "history": "^4.9.0",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "pg": "^7.9.0",
+    "pg-hstore": "^2.3.2",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.0.1",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.1",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "sequelize": "^5.15.1",
+    "socket.io": "^2.2.0",
+    "style-loader": "^1.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "7.4.0",
+    "@babel/plugin-proposal-decorators": "7.4.0",
+    "@babel/plugin-proposal-export-namespace-from": "7.2.0",
+    "@babel/plugin-proposal-function-sent": "7.2.0",
+    "@babel/plugin-proposal-json-strings": "7.2.0",
+    "@babel/plugin-proposal-numeric-separator": "7.2.0",
+    "@babel/plugin-proposal-throw-expressions": "7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-syntax-import-meta": "7.2.0",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.3",
+    "npm-merge-driver": "^2.3.5",
+    "redux-devtools-extension": "^2.13.5",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
   }
 }
