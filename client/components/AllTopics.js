@@ -3,59 +3,48 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { TopicPreview } from './index';
-import { removedTopic, fetchTopics, newTopic } from '../store';
+import { removedTopic, fetchTopics, newTopic, fetchSearchedTopics } from '../store';
+
+// import { API_KEY } from '../../server';
+// import {search} from '../../server/api/utility/utility'
 
 /**
  * COMPONENT
  */
-const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
+const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [data, setData] = useState([]);
 
   const API_KEY = process.env.API_KEY;
 
   useEffect(() => {
     getTopics();
+    setData([...data, topics])
+    // console.log('API KEY >>>>> ', API_KEY);
+    // console.log('search function >>>>> ', search);
 
   }, []);
 
-  // Fetch Searched Term
-  const fetchSearch = async () => {
-    // let info = [
-    //   {name: 'Gary', url: 'http://hagengaryp.com', description: 'my website'},
-    // ]
-    // info.forEach((elem) => {
-    //   addTopic(elem)
-    // })
-    let data = '';
-    let config = {
-      method: 'get',
-      url: `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
-      headers: {
-        'Ocp-Apim-Subscription-Key': `${API_KEY}`,
-      },
-      data: data,
-    };
-    return axios
-      .get(
-        `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
-        config
-      )
-      .then((response) => {
-        data = response.data.webPages.value;
+  useEffect(() => {
+    console.log('useEffect >>> data changed to ', data)
+    getTopics();
+  }, [data]);
 
-        // console.log(JSON.stringify(response.data));
-        // console.log('data = ', response.data.webPages.value[0]);
-        console.log(response);
-        data.forEach((elem) => {
-          addTopic(elem);
-        });
-        addTopic(data);
+  // handle Searched Term
+  const handleSearch = async () => {
 
-        return data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const newData = await searchTopics(searchTerm);
+    // data.forEach((elem) => {
+    //   addTopic(elem);
+    // });
+    // addTopic(data);
+
+    // console.log('array? ', typeof newData);
+    // let newData = JSON.parse(newData)
+    setData([...data, newData])
+
+    console.log('handle search... newData = ', newData)
+
   };
 
   return (
@@ -81,7 +70,8 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic }) => {
           <button
             type="button"
             onClick={() => {
-              fetchSearch();
+              // fetchSearch();
+              handleSearch(searchTerm);
             }}
           >
             Search
@@ -114,6 +104,7 @@ const mapStateToProps = (state) => ({
 const mapDispatch = (dispatch) => ({
   getTopics: () => dispatch(fetchTopics()),
   addTopic: (info) => dispatch(newTopic(info)),
+  searchTopics: (val) => dispatch(fetchSearchedTopics(val))
 });
 
 export default connect(mapStateToProps, mapDispatch)(AllTopics);

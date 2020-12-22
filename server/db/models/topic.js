@@ -9,9 +9,11 @@ const Topic = db.define('topic', {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  imageUrl: {
+    type: Sequelize.TEXT,
+  },
   description: {
     type: Sequelize.TEXT,
-    defaultValue: 'NO DESCRIPTION',
   },
 });
 

@@ -1,45 +1,17 @@
-//If the user is not logged in, forbid entry
+// const axios = require('axios');
+// const dotenv = require('dotenv');
+// // const fs = require('fs');
 
-const isLoggedIn = (req, res, next) => {
-  try {
-    if (req.user) {
-      next();
-    } else {
-      res.sendStatus(401); //unauthorized entry
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+// dotenv.config();
 
-//If the user is not an admin, forbid entry
-const isAdmin = (req, res, next) => {
-  try {
-    if (req.user.isAdmin) {
-      next();
-    } else {
-      res.sendStatus(403); //forbidden entry
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const API_KEY = process.env.API_KEY;
 
-//If the user it is not an admin, or the user is not the correct user, forbid entry
-const isAdminOrCorrectUser = (req, res, next) => {
-  try {
-    if (req.user.isAdmin || req.user.id === Number(req.params.userId)) {
-      next();
-    } else {
-      res.sendStatus(403); //forbidden entry
-    }
-  } catch (error) {
-    console.log(error);
-  }
-};
+// function search(val) {
 
-module.exports = {
-  isLoggedIn,
-  isAdmin,
-  isAdminOrCorrectUser,
-};
+//   console.log('API KEY = ', API_KEY);
+//   return val;
+// }
+
+// module.exports = {
+//   search
+// }
