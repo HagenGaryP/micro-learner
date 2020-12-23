@@ -242,25 +242,29 @@ function randomJoke() {
 }
 
 // random document
-function randomDoc() {
-  axios.get('http://localhost:8080/api/topics')
-    .then(res => {
-      const topics = res.data;
-      const random = Math.floor(Math.random() * topics.length);
-      const name = topics[random].name;
-      const url = topics[random].url;
-      const description = topics[random].description
+const randomDoc = async () => {
+  try {
+    const res = await axios.get(`http://localhost:${PORT}/api/topics`);
 
-      const params = {
-        icon_emoji: ':male-technologist:'
-      }
+    const topics = res.data;
+    const random = Math.floor(Math.random() * topics.length);
+    const name = topics[random].name;
+    const url = topics[random].url;
+    const description = topics[random].description
 
-      bot.postMessageToChannel(
-        'random',
-        `:zap: ${name} - *${description}* \n ${url}`,
-        params
-      );
-    })
+    const params = {
+      icon_emoji: ':male-technologist:'
+    }
+
+    bot.postMessageToChannel(
+      'random',
+      `:zap: ${name} - *${description}* \n ${url}`,
+      params
+    );
+
+  } catch (error) {
+    console.log('something went wrong! error >>> ', error);
+  }
 }
 
 // runHelp() - This is similar to our welcome message: we just want to return a custom text when the user adds help to the request.

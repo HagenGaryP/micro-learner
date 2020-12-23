@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { TopicPreview } from './index';
 import { fetchTopics, newTopic, fetchSearchedTopics } from '../store';
 
-/**
- * COMPONENT
- */
 const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
-
-  const API_KEY = process.env.API_KEY;
 
   useEffect(() => {
     getTopics();

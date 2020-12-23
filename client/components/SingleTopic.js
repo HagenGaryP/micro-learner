@@ -11,7 +11,6 @@ const SingleTopic = ({
   deleteTopic
 }) => {
   useEffect(() => {
-    console.log('single topic history >>>> ', history);
     fetchTopic(match.params.id)
   }, [])
 
