@@ -126,17 +126,17 @@ Note: Slack emoji have codes, you can find them at https://slackmojis.com/
 
 const INITIAL_MESSAGE = 'Get inspired while working with @inspire_bot';
 
-bot.on('start', () => {
-    const params = {
-        icon_emoji: ':robot_face:'
-    }
+// bot.on('start', () => {
+//     const params = {
+//         icon_emoji: ':robot_face:'
+//     }
 
-    bot.postMessageToChannel(
-        'random',
-        `${INITIAL_MESSAGE}`,
-        params
-    );
-})
+//     bot.postMessageToChannel(
+//         'random',
+//         `${INITIAL_MESSAGE}`,
+//         params
+//     );
+// })
 /**
 We also initialized the bot.postMessageToChannel function which is a SlackBot.js method to post a message to a channel.
 In this function, we pass the channel name we want to post to, the message in a string, and the params variable we declared earlier for the emoji.

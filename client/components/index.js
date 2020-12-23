@@ -4,5 +4,6 @@
  * having to figure out which file they belong to!
  */
 export { default as AllTopics } from './AllTopics';
-export { default as TopicPreview } from './TopicPreview';
 export { LandingPage } from './LandingPage';
+export { default as TopicPreview } from './TopicPreview';
+export { default as SingleTopic } from './SingleTopic';

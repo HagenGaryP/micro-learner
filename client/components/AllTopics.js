@@ -3,10 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 import { TopicPreview } from './index';
-import { removedTopic, fetchTopics, newTopic, fetchSearchedTopics } from '../store';
-
-// import { API_KEY } from '../../server';
-// import {search} from '../../server/api/utility/utility'
+import { fetchTopics, newTopic, fetchSearchedTopics } from '../store';
 
 /**
  * COMPONENT
@@ -20,31 +17,16 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
   useEffect(() => {
     getTopics();
     setData([...data, topics])
-    // console.log('API KEY >>>>> ', API_KEY);
-    // console.log('search function >>>>> ', search);
-
   }, []);
 
   useEffect(() => {
-    console.log('useEffect >>> data changed to ', data)
     getTopics();
   }, [data]);
 
   // handle Searched Term
   const handleSearch = async () => {
-
     const newData = await searchTopics(searchTerm);
-    // data.forEach((elem) => {
-    //   addTopic(elem);
-    // });
-    // addTopic(data);
-
-    // console.log('array? ', typeof newData);
-    // let newData = JSON.parse(newData)
     setData([...data, newData])
-
-    console.log('handle search... newData = ', newData)
-
   };
 
   return (

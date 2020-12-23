@@ -1,7 +1,7 @@
 import React from 'react';
 import history from '../history';
 
-function TopicPreview({ topic, handleOnClick }) {
+function TopicPreview({ topic }) {
   return (
     <div className="topic-card">
       <div className="topic-card-textarea">

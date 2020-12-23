@@ -21,14 +21,14 @@ router.get('/', async (req, res, next) => {
 });
 
 // Get Topic by id
-// router.get('/:id', async (req, res, next) => {
-//   try {
-//     const topic = await Topic.findByPk(req.params.id);
-//     res.json(topic);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+router.get('/:id', async (req, res, next) => {
+  try {
+    const topic = await Topic.findByPk(req.params.id);
+    res.json(topic);
+  } catch (err) {
+    next(err);
+  }
+});
 
 //Add a new topic
 router.post('/', async (req, res, next) => {
@@ -52,15 +52,15 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-
-router.get('/:searchTerm', async (req, res, next) => {
+// search new topics to add to DB
+router.get('/search/:searchTerm', async (req, res, next) => {
   let response;
   try {
     response = await fetchSearch(req.params.searchTerm);
     // console.log('api getting searchTerm = ', req.params.searchTerm)
 
-    console.log('response = ', Array.isArray(response))
-    console.log('response = ', response)
+    // console.log('response = ', Array.isArray(response))
+    // console.log('response = ', response)
 
     // res.send(response);
   } catch (error) {

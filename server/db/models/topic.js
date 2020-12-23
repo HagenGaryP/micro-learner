@@ -11,6 +11,7 @@ const Topic = db.define('topic', {
   },
   imageUrl: {
     type: Sequelize.TEXT,
+    defaultValut: 'https://www.harmonytoc.com/Content/img/offline/tool/audit/placeholder.png'
   },
   description: {
     type: Sequelize.TEXT,

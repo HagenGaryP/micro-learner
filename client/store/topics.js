@@ -13,7 +13,7 @@ const removeTopic = (TopicId) => ({ type: REMOVE_TOPIC, TopicId });
 
 export const fetchSearchedTopics = (searchTerm) => async (dispatch) => {
   try {
-    const { data } = await axios.get(`/api/topics/${searchTerm}`);
+    const { data } = await axios.get(`/api/topics/search/${searchTerm}`);
     dispatch(searchTopics(data));
   } catch (err) {
     console.error(err);
@@ -65,11 +65,10 @@ export default function (state = defaultTopics, action) {
     case ADD_TOPIC:
       return [...state, action.topic];
     case REMOVE_TOPIC:
-      const filteredTopic = state.rows.filter(
+      const filteredTopic = state.filter(
         (topic) => topic.id !== action.topicId
       );
-      const removed = state.count - 1;
-      return { count: removed, rows: filteredTopic };
+      return filteredTopic;
     default:
       return state;
   }

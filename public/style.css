@@ -173,3 +173,63 @@ form div {
   margin-left: 15px;
   margin-right: 15px;
 }
+
+
+/* ------------- Single Topic ---------------*/
+.single-topic-img {
+  height: 250px;
+  width: 250px;
+  background-size: cover;
+  border-radius: 2px;
+}
+
+.single-topic-info-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: 50px;
+  padding-right: 150px;
+}
+
+.single-topic-view-name {
+  font-family: 'Roboto';
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.single-topic-view-url {
+  font-family: 'Roboto';
+  font-size: 1.4em;
+  font-weight: 900;
+}
+
+.single-topic-img-container {
+  height: fit-content;
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.single-topic-description {
+  margin-top: 25px;
+  font-family: 'Roboto';
+  font-size: 1em;
+  align-self: flex-end;
+}
+
+.single-topic-container {
+  display: flex;
+  margin-top: 75px;
+}
+
+.topic-preview {
+  margin: 25px;
+}
+
+.btn-delete {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 80px;
+  background-color: red;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
