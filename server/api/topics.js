@@ -57,12 +57,6 @@ router.get('/search/:searchTerm', async (req, res, next) => {
   let response;
   try {
     response = await fetchSearch(req.params.searchTerm);
-    // console.log('api getting searchTerm = ', req.params.searchTerm)
-
-    // console.log('response = ', Array.isArray(response))
-    // console.log('response = ', response)
-
-    // res.send(response);
   } catch (error) {
     next(error);
   }
@@ -80,7 +74,6 @@ router.get('/search/:searchTerm', async (req, res, next) => {
       } else {
         continue;
       }
-
     } catch (err) {
       next(err);
     }
@@ -88,12 +81,6 @@ router.get('/search/:searchTerm', async (req, res, next) => {
 })
 
 const fetchSearch = async (searchTerm) => {
-  // let info = [
-  //   {name: 'Gary', url: 'http://hagengaryp.com', description: 'my website'},
-  // ]
-  // info.forEach((elem) => {
-  //   addTopic(elem)
-  // })
   let data = '';
   let config = {
     method: 'get',
@@ -110,15 +97,6 @@ const fetchSearch = async (searchTerm) => {
     )
     .then((response) => {
       data = response.data.webPages.value;
-
-      // console.log(JSON.stringify(response.data));
-      // console.log('data = ', response.data.webPages.value[0]);
-      // console.log(response);
-      // data.forEach((elem) => {
-      //   addTopic(elem);
-      // });
-      // addTopic(data);
-
       return data;
     })
     .catch((error) => {

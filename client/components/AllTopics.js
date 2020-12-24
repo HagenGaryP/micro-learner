@@ -42,11 +42,9 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </label>
-          {/* <input type='submit' value='Submit' /> */}
           <button
             type="button"
             onClick={() => {
-              // fetchSearch();
               handleSearch(searchTerm);
             }}
           >
