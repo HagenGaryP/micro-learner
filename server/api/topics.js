@@ -61,13 +61,14 @@ router.get('/search/:searchTerm', async (req, res, next) => {
     next(error);
   }
   for (let i = 0; i < response.length; i++) {
-    console.log('index ', i, ' = ', response[i])
     let val = response[i];
+    if (!val.snippet || !val.name) continue;
+    // if (!val.snippet.contains(req.params.searchTerm) && !val.name.contains(req.params.searchTerm)) continue;
     try {
       const createTopic = await Topic.create({
         name: val.name,
         url: val.url,
-        description: val.snippet || null,
+        description: val.snippet,
       });
       if (createTopic) {
         res.json(createTopic);
