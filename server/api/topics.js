@@ -60,15 +60,29 @@ router.get('/search/:searchTerm', async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-  for (let i = 0; i < response.length; i++) {
-    let val = response[i];
+  const dataArray = [];
+  let webPages = response.webPages.value;
+  let entities = response.entities.value;
+  let videos = response.videos.value;
+  // console.log('>>>>>>>>>>>>>>>>>      RESPONSE.DATA        >>>>>>>>>>>>>>>>>>>');
+  // console.log(' >>>>  webPages = ', webPages);
+  // console.log(' >>>>>>>  entities = ', entities);
+  // console.log(' videos = ', videos, '  >>>>>>>>>>>>> ');
+  // console.log(' rankingResponse = ', response.rankingResponse.mainline.items);
+
+  for (let i = 0; i < webPages.length; i++) {
+    let val = webPages[i], image = entities[0].image.hostPageUrl || null;
+    // console.log('val = ', val, '  image = ', image)
     if (!val.snippet || !val.name) continue;
-    // if (!val.snippet.contains(req.params.searchTerm) && !val.name.contains(req.params.searchTerm)) continue;
+    // if (!val.snippet.includes(req.params.searchTerm) && !val.name.includes(req.params.searchTerm)) continue;
+
     try {
+      // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
       const createTopic = await Topic.create({
         name: val.name,
         url: val.url,
         description: val.snippet,
+        imageUrl: image,
       });
       if (createTopic) {
         res.json(createTopic);
@@ -97,7 +111,7 @@ const fetchSearch = async (searchTerm) => {
       config
     )
     .then((response) => {
-      data = response.data.webPages.value;
+      data = response.data;
       return data;
     })
     .catch((error) => {

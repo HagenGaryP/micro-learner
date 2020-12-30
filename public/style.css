@@ -119,6 +119,13 @@ input {
   height: 20%;
 }
 
+.topic-img {
+  display: flex;
+  height: 3.5rem;
+  max-width: 8rem;
+  margin: 0 auto;
+}
+
 .topic-card-textarea {
   display: flex;
   width: 100%;
@@ -128,6 +135,7 @@ input {
   background-color:rgba(186, 186, 212, 0.762);
   justify-content: center;
   border-radius: 0 0 5px 5px;
+  margin-top: .5rem;
 }
 
 .topic-card-name {
@@ -145,6 +153,7 @@ input {
 .hover:hover {
   cursor: pointer;
 }
+
 
 /* ------------- Single Topic ---------------*/
 .single-topic-img {

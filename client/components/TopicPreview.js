@@ -3,15 +3,18 @@ import history from '../history';
 
 function TopicPreview({ topic }) {
   return (
-    <div className="topic-card">
+    <div
+      className="topic-card hover-links"
+      onClick={() => history.push(`/topics/${topic.id}`)}
+    >
+      <span>
+        <img className="topic-img" src={topic.imageUrl} />
       <div className="topic-card-textarea">
-        <p
-          onClick={() => history.push(`/topics/${topic.id}`)}
-          className="topic-card-name hover-links"
-        >
+        <p className="topic-card-name">
           {topic.name}
         </p>
       </div>
+      </span>
     </div>
   );
 }
