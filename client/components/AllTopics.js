@@ -25,7 +25,7 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
 
   return (
     <div className="all-topics-start">
-      <div>
+      <div className="search-container">
         <h1>Search More Content</h1>
         <form
           onSubmit={() => {
@@ -33,7 +33,6 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
           }}
         >
           <label>
-            Search:
             <input
               name="search"
               type="text"
@@ -43,6 +42,7 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
             />
           </label>
           <button
+            className="btn-search"
             type="button"
             onClick={() => {
               handleSearch(searchTerm);
@@ -51,9 +51,6 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
             Search
           </button>
         </form>
-      </div>
-
-      <div className="top-area-container">
       </div>
       {/* ---------- topics ----------*/}
       <div className="all-topics-container">

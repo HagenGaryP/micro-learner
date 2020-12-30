@@ -4,24 +4,19 @@ import { Link } from 'react-router-dom';
 
 export const LandingPage = () => {
   return (
-    <div>
-      <div>
-        <div className="welcome" />
-        <div className="home-page-container">
-          <div className="front-page-welcome">
-            <div>
-              <h1 className="front-display-text">Micro-Learner</h1>
-              <div className="front-page-buttons">
-                <Link to="/topics">
-                  <Button variant="outline-light button-margin">
-                    VIEW TOPICS
-                  </Button>
-                </Link>
-              </div>
-            </div>
+    <div className="home-page-container">
+      {/* <div className="front-page-welcome"> */}
+        <div className="front-display-text">
+          <h1 className="primary-header">Micro-Learner</h1>
+          <div className="front-page-buttons">
+            <Link to="/topics">
+              <Button variant="outline-light">
+                <h2>VIEW TOPICS</h2>
+              </Button>
+            </Link>
           </div>
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 };

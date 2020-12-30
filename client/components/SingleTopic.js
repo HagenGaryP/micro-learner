@@ -30,13 +30,11 @@ const SingleTopic = ({
       </button>
       </div>
       <div className="single-topic-info-container">
-        <p className="single-topic-view-name">Topic Name: {topic.name}</p>
-        <p className="single-topic-view-url">
-          url: {topic.url}
-        </p>
-
+        <a className="topic-link" href={`${topic.url}`}>
+          {topic.name}
+        </a>
         <div className="single-topic-description">
-          description: {topic.description}
+          {topic.description}
         </div>
       </div>
     </div>
