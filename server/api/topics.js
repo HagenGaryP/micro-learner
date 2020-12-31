@@ -85,14 +85,15 @@ router.get('/search/:searchTerm', async (req, res, next) => {
         imageUrl: image,
       });
       if (createTopic) {
-        res.json(createTopic);
-      } else {
-        continue;
+        // res.json(createTopic);
+        dataArray.push(createTopic);
       }
     } catch (err) {
       next(err);
     }
   }
+  console.log('data array = ', dataArray)
+  return res.send(dataArray);
 })
 
 const fetchSearch = async (searchTerm) => {
@@ -105,12 +106,13 @@ const fetchSearch = async (searchTerm) => {
     },
     data: data,
   };
-  return axios
-    .get(
-      `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
-      config
+  return axios(config
+    // .get(
+    //   `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
+    //   config
     )
     .then((response) => {
+      // console.log('response >>>>> ', response);
       data = response.data;
       return data;
     })

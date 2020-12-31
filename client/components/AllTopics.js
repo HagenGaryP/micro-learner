@@ -19,8 +19,13 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
 
   // handle Searched Term
   const handleSearch = async () => {
-    const newData = await searchTopics(searchTerm);
-    setData([...data, newData])
+    try {
+      const newData = await searchTopics(searchTerm);
+      console.log('newData = ', newData);
+      setData([...data, newData])
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
