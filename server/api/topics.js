@@ -77,7 +77,6 @@ router.get('/search/:searchTerm', async (req, res, next) => {
     // if (!val.snippet.includes(req.params.searchTerm) && !val.name.includes(req.params.searchTerm)) continue;
 
     try {
-      // Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
       const createTopic = await Topic.create({
         name: val.name,
         url: val.url,
@@ -85,14 +84,13 @@ router.get('/search/:searchTerm', async (req, res, next) => {
         imageUrl: image,
       });
       if (createTopic) {
-        // res.json(createTopic);
         dataArray.push(createTopic);
       }
     } catch (err) {
       next(err);
     }
   }
-  console.log('data array = ', dataArray)
+  // console.log('data array = ', dataArray)
   return res.send(dataArray);
 })
 
@@ -106,13 +104,8 @@ const fetchSearch = async (searchTerm) => {
     },
     data: data,
   };
-  return axios(config
-    // .get(
-    //   `https://api.bing.microsoft.com/v7.0/search?q=${searchTerm}`,
-    //   config
-    )
+  return axios(config)
     .then((response) => {
-      // console.log('response >>>>> ', response);
       data = response.data;
       return data;
     })

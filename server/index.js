@@ -111,10 +111,10 @@ bot.on('error', (err) => {
 
 // Message Handler
 bot.on('message', (data) => {
-  if(data.type !== 'message') {
+  // console.log('data >>>>> ', data)
+  if (data.type !== 'message') {
     return;
   } else {
-    // console.log('data >>>>> ', data)
     handleMessage(data.text);
   }
 });
