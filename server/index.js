@@ -111,7 +111,7 @@ bot.on('error', (err) => {
 
 // Message Handler
 bot.on('message', (data) => {
-  if(data.type !== 'message' || data.subtype === 'bot_message') {
+  if(data.type !== 'message') {
     return;
   } else {
     // console.log('data >>>>> ', data)
