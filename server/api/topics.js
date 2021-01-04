@@ -72,16 +72,25 @@ router.get('/search/:searchTerm', async (req, res, next) => {
 
   for (let i = 0; i < webPages.length; i++) {
     let val = webPages[i], image = entities[0].image.hostPageUrl || null;
-    // console.log('val = ', val, '  image = ', image)
-    if (!val.snippet || !val.name) continue;
-    // if (!val.snippet.includes(req.params.searchTerm) && !val.name.includes(req.params.searchTerm)) continue;
+    let description = val.snippet || val.description;
+    let category = '';
+    if (!description.includes(req.params.searchTerm)) continue;
+
+    if (val.name.includes('tutorial') || description.includes('tutorial')) {
+      category = 'tutorial';
+    } else if (val.name.includes('documentation') || description.includes('documentation')) {
+      category = 'documentation';
+    } else if (val.name.includes('article') || description.includes('article')) {
+      category = 'article';
+    }
 
     try {
       const createTopic = await Topic.create({
         name: val.name,
         url: val.url,
-        description: val.snippet,
         imageUrl: image,
+        category: category,
+        description: description,
       });
       if (createTopic) {
         dataArray.push(createTopic);
