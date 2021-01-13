@@ -31,16 +31,11 @@ export const fetchTopics = () => async (dispatch) => {
 };
 
 export const newTopic = (info) => async (dispatch) => {
-  console.log('Redux side, info = ', info);
   if (Array.isArray(info)) {
     info = info[0];
   }
   try {
-    const { data } = await axios.post('/api/topics', {
-      url: info.url,
-      name: info.name,
-      description: info.synopsis,
-    });
+    const { data } = await axios.post('/api/topics/add', info);
     dispatch(addTopic(data));
   } catch (error) {
     console.error(error);

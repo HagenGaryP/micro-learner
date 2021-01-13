@@ -31,7 +31,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 //Add a new topic
-router.post('/', async (req, res, next) => {
+router.post('/add', async (req, res, next) => {
   try {
     const createTopic = await Topic.create(req.body);
     res.json(createTopic);
@@ -74,13 +74,23 @@ router.get('/search/:searchTerm', async (req, res, next) => {
     let val = webPages[i], image = entities[0].image.hostPageUrl || null;
     let description = val.snippet || val.description;
     let category = '';
-    if (!description.includes(req.params.searchTerm)) continue;
+    if (!description.includes(req.params.searchTerm) ||
+        description.includes('game')
+    ) {
+      continue;
+    }
 
-    if (val.name.includes('tutorial') || description.includes('tutorial')) {
+    if (val.name.includes('tutorial') ||
+        val.name.includes('how to') ||
+        description.includes('how to') ||
+        description.includes('tutorial')
+    ) {
+      // assuming link to tutorial or how-to
       category = 'tutorial';
+
     } else if (val.name.includes('documentation') || description.includes('documentation')) {
       category = 'documentation';
-    } else if (val.name.includes('article') || description.includes('article')) {
+    } else {
       category = 'article';
     }
 
