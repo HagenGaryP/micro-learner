@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { newTopic } from "../store";
 import { connect } from "react-redux";
+// import { useHistory } from 'react-router-dom';
+import history from '../history';
+import { newTopic } from "../store";
 import { AddTopicForm } from "./index";
 
 const AddTopic = ({ addToTopicList }) => {
@@ -45,16 +47,26 @@ const AddTopic = ({ addToTopicList }) => {
   };
 
   return (
-    <div className="form-container">
-      <AddTopicForm
-        handleSubmit={handleSubmit}
-        name={name}
-        category={category}
-        imageUrl={imageUrl}
-        url={url}
-        description={description}
-        handleChange={handleChange}
-      />
+    <div>
+      <div className="redirect-all-topics">
+        <button
+          type="button"
+          onClick={() => history.push('/topics')}
+        >
+          View All Topics
+        </button>
+      </div>
+      <div className="form-container">
+        <AddTopicForm
+          handleSubmit={handleSubmit}
+          name={name}
+          category={category}
+          imageUrl={imageUrl}
+          url={url}
+          description={description}
+          handleChange={handleChange}
+        />
+      </div>
     </div>
   );
 };
