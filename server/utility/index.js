@@ -61,41 +61,41 @@ const randomDoc = async () => {
   }
 }
 
-// schedule message method
-(async () => {
-  // for loop to set desired amount of scheduled messages
-  for (let i = 0; i < 2; i++) {
+/**************   schedule message method   *****************/
+// (async () => {
+//   // for loop to set desired amount of scheduled messages
+//   for (let i = 0; i < 2; i++) {
 
-    // tomorrow.setDate(tomorrow.getDate());
-    tomorrow.setHours(hour, min, 0);
-    try {
-      // Call the chat.scheduleMessage method using the WebClient
-      const result = await web.chat.scheduleMessage({
-        channel: channelId,
-        // messaging the legacy bot to trigger message post
-        text: `@inspire bot random doc`,
-        // Time to post message, in Unix Epoch timestamp format
-        post_at: tomorrow.getTime() / 1000
-      });
-      console.log(result);
-      min++;
-    }
-    catch (error) {
-      console.error(error);
-    }
-  }
-  // try {
-  //   // Use the `chat.postMessage` method to send a message from this app
-  //   await web.chat.postMessage({
-  //     channel: '#general',
-  //     text: `The current time is ${currentTime}`,
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+//     // tomorrow.setDate(tomorrow.getDate());
+//     tomorrow.setHours(hour, min, 0);
+//     try {
+//       // Call the chat.scheduleMessage method using the WebClient
+//       const result = await web.chat.scheduleMessage({
+//         channel: channelId,
+//         // messaging the legacy bot to trigger message post
+//         text: `@inspire bot random doc`,
+//         // Time to post message, in Unix Epoch timestamp format
+//         post_at: tomorrow.getTime() / 1000
+//       });
+//       console.log(result);
+//       min++;
+//     }
+//     catch (error) {
+//       console.error(error);
+//     }
+//   }
+//   // try {
+//   //   // Use the `chat.postMessage` method to send a message from this app
+//   //   await web.chat.postMessage({
+//   //     channel: '#general',
+//   //     text: `The current time is ${currentTime}`,
+//   //   });
+//   // } catch (error) {
+//   //   console.log(error);
+//   // }
 
-  // console.log('Message posted!');
-})();
+//   // console.log('Message posted!');
+// })();
 
 module.exports = {
   bot,

@@ -7,3 +7,5 @@ export { default as AllTopics } from './AllTopics';
 export { LandingPage } from './LandingPage';
 export { default as TopicPreview } from './TopicPreview';
 export { default as SingleTopic } from './SingleTopic';
+export { default as AddTopic } from './AddTopic';
+export { default as AddTopicForm } from './AddTopicForm';

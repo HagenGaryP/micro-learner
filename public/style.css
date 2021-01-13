@@ -84,6 +84,10 @@ button {
   margin-bottom: 5rem;
 }
 
+.search-header {
+  margin-left: 3.5rem;
+}
+
 input {
   display: inline-flex;
   height: 2.5rem;
@@ -211,4 +215,32 @@ input {
   background-color: red;
   font-size: 2rem;
   font-weight: 600;
+}
+
+
+/* ------------- Add Topic Component ---------------*/
+
+.add-topic {
+  display: flex;
+  align-self: flex-end;
+  justify-content: right;
+  margin-right: 5rem;
+  font-size: 2rem;
+  font-weight: 900;
+  background-color: beige;
+  text-decoration: underline;
+  padding: .5rem 1rem;
+  border-radius:  20rem;
+}
+
+.add-topic:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+}
+
+.form-container {
+  display: flex;
+  padding: 10rem;
+  justify-content: center;
+  background-color: gray;
 }

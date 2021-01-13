@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import { TopicPreview } from './index';
 import { fetchTopics, newTopic, fetchSearchedTopics } from '../store';
 
@@ -31,11 +31,12 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
   return (
     <div className="all-topics-start">
       <div className="search-container">
-        <h1>Search More Content</h1>
+        <div className="add-topic">
+          <Link to="/topics/add"> Add A New Topic </Link>
+        </div>
+        <h1 className="search-header">Search More Content</h1>
         <form
-          onSubmit={() => {
-            console.log('submitted ', searchTerm);
-          }}
+          onSubmit={() => handleSearch(searchTerm)}
         >
           <label>
             <input
@@ -49,13 +50,12 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
           <button
             className="btn-search"
             type="button"
-            onClick={() => {
-              handleSearch(searchTerm);
-            }}
+            onClick={() => handleSearch(searchTerm)}
           >
             Search
           </button>
         </form>
+
       </div>
       {/* ---------- topics ----------*/}
       <div className="all-topics-container">
