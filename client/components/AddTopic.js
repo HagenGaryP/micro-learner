@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-// import { useHistory } from 'react-router-dom';
 import history from '../history';
 import { newTopic } from "../store";
 import { AddTopicForm } from "./index";

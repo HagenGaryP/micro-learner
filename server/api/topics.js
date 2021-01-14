@@ -63,13 +63,7 @@ router.get('/search/:searchTerm', async (req, res, next) => {
   const dataArray = [];
   let webPages = response.webPages.value;
   let entities = response.entities.value;
-  let videos = response.videos.value;
-  // console.log('>>>>>>>>>>>>>>>>>      RESPONSE.DATA        >>>>>>>>>>>>>>>>>>>');
-  // console.log(' >>>>  webPages = ', webPages);
-  // console.log(' >>>>>>>  entities = ', entities);
-  // console.log(' videos = ', videos, '  >>>>>>>>>>>>> ');
-  // console.log(' rankingResponse = ', response.rankingResponse.mainline.items);
-
+  // let videos = response.videos.value;
   for (let i = 0; i < webPages.length; i++) {
     let val = webPages[i], image = entities[0].image.hostPageUrl || null;
     let description = val.snippet || val.description;
@@ -109,7 +103,6 @@ router.get('/search/:searchTerm', async (req, res, next) => {
       next(err);
     }
   }
-  // console.log('data array = ', dataArray)
   return res.send(dataArray);
 })
 
