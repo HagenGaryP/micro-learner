@@ -30,7 +30,7 @@ const bot = new SlackBot({
 
 // Response Handler
 function handleMessage(message) {
-  if(message.includes(' random doc')) {
+  if(message && message.includes(' random doc')) {
     randomDoc()
   }
 }
