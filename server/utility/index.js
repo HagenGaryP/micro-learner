@@ -11,7 +11,6 @@ const BOT_TOKEN = process.env.BOT_TOKEN;
 // instance of WebClient class with token from environment variable
 const web = new WebClient(process.env.BOT_TOKEN);
 
-
 // Unix timestamp for tomorrow, when message is scheduled
 const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate()); // add 1 day to date
