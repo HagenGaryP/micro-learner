@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Topic } = require('../db/models');
+const { Product } = require('../db/models');
 const { Op } = require('sequelize');
 const axios = require('axios');
 const dotenv = require('dotenv');
@@ -10,31 +10,31 @@ const API_KEY = process.env.API_KEY;
 
 module.exports = router;
 
-// get all topics
+// get all products
 router.get('/', async (req, res, next) => {
   try {
-    const topics = await Topic.findAll();
-    res.json(topics);
+    const products = await Product.findAll();
+    res.json(products);
   } catch (err) {
     next(err);
   }
 });
 
-// Get Topic by id
+// Get Product by id
 router.get('/:id', async (req, res, next) => {
   try {
-    const topic = await Topic.findByPk(req.params.id);
-    res.json(topic);
+    const product = await Product.findByPk(req.params.id);
+    res.json(product);
   } catch (err) {
     next(err);
   }
 });
 
-//Add a new topic
+//Add a new product
 router.post('/add', async (req, res, next) => {
   try {
-    const createTopic = await Topic.create(req.body);
-    res.json(createTopic);
+    const createProduct = await Product.create(req.body);
+    res.json(createProduct);
   } catch (err) {
     next(err);
   }
@@ -43,7 +43,7 @@ router.post('/add', async (req, res, next) => {
 //Delete
 router.delete('/:id', async (req, res, next) => {
   try {
-    const numOfDeleted = await Topic.destroy({
+    const numOfDeleted = await Product.destroy({
       where: { id: req.params.id },
     });
     res.json(numOfDeleted);
@@ -52,7 +52,7 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-// search new topics to add to DB
+// search new products to add to DB
 router.get('/search/:searchTerm', async (req, res, next) => {
   let response;
   try {
@@ -89,15 +89,15 @@ router.get('/search/:searchTerm', async (req, res, next) => {
     }
 
     try {
-      const createTopic = await Topic.create({
+      const createProduct = await Product.create({
         name: val.name,
         url: val.url,
         imageUrl: image,
         category: category,
         description: description,
       });
-      if (createTopic) {
-        dataArray.push(createTopic);
+      if (createProduct) {
+        dataArray.push(createProduct);
       }
     } catch (err) {
       next(err);

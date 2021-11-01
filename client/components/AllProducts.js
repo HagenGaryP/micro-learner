@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { TopicPreview } from './index';
-import { fetchTopics, newTopic, fetchSearchedTopics } from '../store';
+import { ProductPreview } from './index';
+import { fetchProducts, newProduct, fetchSearchedProducts } from '../store';
 
-const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) => {
+const AllProducts = ({ products, deleteProduct, getProducts, addProduct, searchProducts }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    getTopics();
-    setData([...data, topics])
+    getProducts();
+    setData([...data, products])
   }, []);
 
   useEffect(() => {
-    getTopics();
+    getProducts();
   }, [data]);
 
   // handle Searched Term
   const handleSearch = async () => {
     try {
-      const newData = await searchTopics(searchTerm);
+      const newData = await searchProducts(searchTerm);
       console.log('newData = ', newData);
       setData([...data, newData])
     } catch (error) {
@@ -29,11 +29,8 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
   };
 
   return (
-    <div className="all-topics-start">
+    <div className="all-products-start">
       <div className="search-container">
-        <div className="add-topic">
-          <Link to="/topics/add"> Add A New Topic </Link>
-        </div>
         <h1 className="search-header">Search More Content</h1>
         <form
           onSubmit={() => handleSearch(searchTerm)}
@@ -57,14 +54,14 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
         </form>
 
       </div>
-      {/* ---------- topics ----------*/}
-      <div className="all-topics-container">
-        {Array.isArray(topics) &&
-          topics.map((topic) => {
+      {/* ---------- products ----------*/}
+      <div className="all-products-container">
+        {Array.isArray(products) &&
+          products.map((product) => {
             return (
-              <TopicPreview
-                key={topic.id}
-                topic={topic}
+              <ProductPreview
+                key={product.id}
+                product={product}
               />
             );
           })}
@@ -74,13 +71,13 @@ const AllTopics = ({ topics, deleteTopic, getTopics, addTopic, searchTopics }) =
 };
 
 const mapStateToProps = (state) => ({
-  topics: state.topics,
+  products: state.products,
 });
 
 const mapDispatch = (dispatch) => ({
-  getTopics: () => dispatch(fetchTopics()),
-  addTopic: (info) => dispatch(newTopic(info)),
-  searchTopics: (val) => dispatch(fetchSearchedTopics(val))
+  getProducts: () => dispatch(fetchProducts()),
+  addProduct: (info) => dispatch(newProduct(info)),
+  searchProducts: (val) => dispatch(fetchSearchedProducts(val))
 });
 
-export default connect(mapStateToProps, mapDispatch)(AllTopics);
+export default connect(mapStateToProps, mapDispatch)(AllProducts);

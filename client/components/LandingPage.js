@@ -1,15 +1,8 @@
 import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import history from '../history';
-
-import { slide as Menu } from 'react-burger-menu';
 
 export const LandingPage = () => {
-
-  const showSettings = (event) => {
-    // do something
-  }
 
   return (
     <div className="home-page-container">

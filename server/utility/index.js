@@ -38,13 +38,13 @@ function handleMessage(message) {
 // random document
 const randomDoc = async () => {
   try {
-    const res = await axios.get(`http://localhost:${PORT}/api/topics`);
+    const res = await axios.get(`http://localhost:${PORT}/api/products`);
 
-    const topics = res.data;
-    const random = Math.floor(Math.random() * topics.length);
-    const name = topics[random].name;
-    const url = topics[random].url;
-    const description = topics[random].description
+    const products = res.data;
+    const random = Math.floor(Math.random() * products.length);
+    const name = products[random].name;
+    const url = products[random].url;
+    const description = products[random].description
 
     const params = {
       icon_emoji: ':male-technologist:'
