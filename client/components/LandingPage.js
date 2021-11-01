@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import history from '../history';
 
 import { slide as Menu } from 'react-burger-menu';
 
@@ -17,7 +18,7 @@ export const LandingPage = () => {
           <div className="front-display-text">
             <h1 className="primary-header">GMG</h1>
             <div className="front-page-buttons">
-              <Link to="/topics">
+              <Link to="/scan">
                 <Button variant="outline-dark">
                   <h2>Scan Code</h2>
                 </Button>
