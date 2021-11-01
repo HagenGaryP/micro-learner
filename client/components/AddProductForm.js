@@ -42,7 +42,7 @@ const AddProductForm = ({
           />
         </Form.Group>
         <Form.Group controlId="formUrl">
-          <Form.Label> Topic URL: </Form.Label>
+          <Form.Label> Product URL: </Form.Label>
           <Form.Control
             name="url"
             type="text"

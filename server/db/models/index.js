@@ -1,5 +1,5 @@
-const Topic = require('./topic');
+const Product = require('./product');
 
 module.exports = {
-  Topic,
+  Product,
 };

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import history from '../history';
-import { newTopic } from "../store";
-import { AddTopicForm } from "./index";
+import { newProduct } from "../store";
+import { AddProductForm } from "./index";
 
-const AddTopic = ({ addToTopicList }) => {
+const AddProduct = ({ addToProductList }) => {
   // state variables
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
@@ -34,8 +34,8 @@ const AddTopic = ({ addToTopicList }) => {
       description: event.target.description.value,
       imageUrl: event.target.imageUrl.value,
     };
-    // adding form submission's info to Topic list
-    addToTopicList(info);
+    // adding form submission's info to Product list
+    addToProductList(info);
 
     // clearing form's state
     setCategory("");
@@ -47,16 +47,16 @@ const AddTopic = ({ addToTopicList }) => {
 
   return (
     <div>
-      <div className="redirect-all-topics">
+      <div className="redirect-all-products">
         <button
           type="button"
-          onClick={() => history.push('/topics')}
+          onClick={() => history.push('/products')}
         >
-          View All Topics
+          View All Products
         </button>
       </div>
       <div className="form-container">
-        <AddTopicForm
+        <AddProductForm
           handleSubmit={handleSubmit}
           name={name}
           category={category}
@@ -71,7 +71,7 @@ const AddTopic = ({ addToTopicList }) => {
 };
 
 const mapDispatch = (dispatch) => ({
-  addToTopicList: (event) => dispatch(newTopic(event)),
+  addToProductList: (event) => dispatch(newProduct(event)),
 });
 
-export default connect(null, mapDispatch)(AddTopic);
+export default connect(null, mapDispatch)(AddProduct);

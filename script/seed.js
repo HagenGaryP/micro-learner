@@ -2,14 +2,14 @@
 
 const db = require('../server/db');
 
-const {Topic} = require('../server/db/models');
+const {Product} = require('../server/db/models');
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   await Promise.all([
-    Topic.create({
+    Product.create({
       name: 'ReactJS',
       url: "https://reactjs.org",
       description: "Using props and state, we can put together a small Todo application.This example uses state to track the current list of items as well as the text that the user has entered. Although event handlers appear to be rendered inline, they will be collected and implemented using event delegation."

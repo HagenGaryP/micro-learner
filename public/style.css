@@ -23,12 +23,37 @@ body {
 
 .app-container {
   height: 100vh;
-  background-color: #6884d3;
+  width: 100vw;
+  background-color: white;
   position: relative;
 }
 
 /* ------------- Landing Page ---------------*/
 .home-page-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  /* margin-top: 10rem; */
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+.menu-container {
+  /* width: rem; */
+  /* margin-top: 1rem; */
+  margin-right: 3rem;
+  font-size: 3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.menu-icon {
+  font-size: 8rem;
+
+}
+.content-container {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -40,7 +65,7 @@ body {
 
 .front-display-text {
   position: absolute;
-  color: whitesmoke;
+  color: black;
   font-size: 3rem;
   justify-content: center;
   align-items: center;
@@ -62,10 +87,26 @@ button {
   font-size: 8rem;
 }
 
+/* ------------- Scan Page -----------------------*/
 
-/* ------------- All Topics Page ---------------*/
+.scan-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin-top: 10rem;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
 
-.all-topics-start {
+.scan-view {
+  height: 50%;
+  width: 50%;
+}
+
+/* ------------- All Products Page ---------------*/
+
+.all-products-start {
   background-color: #e62c2c;
   background-image: linear-gradient(315deg, #d74040 0%, #7e8996 90%);
   padding-top: 75px;
@@ -104,7 +145,7 @@ input {
 
 }
 
-.all-topics-container {
+.all-products-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -114,7 +155,7 @@ input {
 
 /* ----- Preview ------ */
 
-.topic-card {
+.product-card {
   display: flex;
   margin: 2rem;
   /* border-radius: 7px; */
@@ -123,14 +164,14 @@ input {
   height: 20%;
 }
 
-.topic-img {
+.product-img {
   display: flex;
   height: 3.5rem;
   max-width: 8rem;
   margin: 0 auto;
 }
 
-.topic-card-textarea {
+.product-card-textarea {
   display: flex;
   width: 100%;
   font-size: 1.2rem;
@@ -142,7 +183,7 @@ input {
   margin-top: .5rem;
 }
 
-.topic-card-name {
+.product-card-name {
   font-family: "Roboto";
   font-size: 1.1em;
   font-weight: 500;
@@ -159,15 +200,15 @@ input {
 }
 
 
-/* ------------- Single Topic ---------------*/
-.single-topic-img {
+/* ------------- Single Product ---------------*/
+.single-product-img {
   height: 250px;
   width: 250px;
   background-size: cover;
   border-radius: 2px;
 }
 
-.single-topic-info-container {
+.single-product-info-container {
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
@@ -176,7 +217,7 @@ input {
   align-content: center;
 }
 
-.topic-link {
+.product-link {
   display: flex;
   justify-content: center;
   font-size: 4rem;
@@ -185,26 +226,26 @@ input {
   text-decoration: underline;
 }
 
-.single-topic-img-container {
+.single-product-img-container {
   height: fit-content;
   margin-left: 5rem;
   margin-top: 2rem;
   margin-right: 2rem;
 }
 
-.single-topic-description {
+.single-product-description {
   margin-top: 25px;
   font-family: 'Roboto';
   font-size: 1.5rem;
   align-self: flex-end;
 }
 
-.single-topic-container {
+.single-product-container {
   display: flex;
   margin-top: 75px;
 }
 
-.topic-preview {
+.product-preview {
   margin: 25px;
 }
 
@@ -218,9 +259,9 @@ input {
 }
 
 
-/* ------------- Add Topic Component ---------------*/
+/* ------------- Add Product Component ---------------*/
 
-.add-topic {
+.add-product {
   display: flex;
   align-self: flex-end;
   justify-content: right;
@@ -233,7 +274,7 @@ input {
   border-radius:  20rem;
 }
 
-.add-topic:hover {
+.add-product:hover {
   transform: translateY(-.3rem);
   box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
 }
