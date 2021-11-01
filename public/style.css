@@ -23,12 +23,33 @@ body {
 
 .app-container {
   height: 100vh;
-  background-color: #6884d3;
+  width: 100vw;
+  background-color: white;
   position: relative;
 }
 
 /* ------------- Landing Page ---------------*/
 .home-page-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  /* margin-top: 10rem; */
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+}
+
+.menu-container {
+  background-color: red;
+  /* width: rem; */
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.content-container {
   display: flex;
   height: 100vh;
   width: 100vw;
@@ -40,7 +61,7 @@ body {
 
 .front-display-text {
   position: absolute;
-  color: whitesmoke;
+  color: black;
   font-size: 3rem;
   justify-content: center;
   align-items: center;

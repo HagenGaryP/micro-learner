@@ -5,7 +5,10 @@
  */
 export { default as AllTopics } from './AllTopics';
 export { LandingPage } from './LandingPage';
+export { MenuSlide } from './MenuSlide'
 export { default as TopicPreview } from './TopicPreview';
 export { default as SingleTopic } from './SingleTopic';
 export { default as AddTopic } from './AddTopic';
 export { default as AddTopicForm } from './AddTopicForm';
+export { default as Scan } from './Scan'
+export { default as ScanSuccess } from './ScanSuccess'
